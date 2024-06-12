@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+		<title>project 1</title>
+	</head>
+	<body>
+		<h1>Task Management App</h1>
+		{% if request.user.is_authenticated %}
+  		Welcome, {{ user.get_username }} | <a href="/logout">Logout</a>
+		{% else %}
+			<a href="{% url '' %}">Login</a> |
+			<a href="{% url 'register' %}">Register</a>
+		{% endif %}
+		{% block content %}
+		{% endblock %}
+		<!-- <img src="{% static 'img/mountains.jpg' %}" width="1000" height="700"> -->
+		<script src="{% static 'js/app.js' %}"></script>
+	</body>
+</html>

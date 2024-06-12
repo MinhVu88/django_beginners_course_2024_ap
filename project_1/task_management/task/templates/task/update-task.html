@@ -1,0 +1,18 @@
+{% extends 'task/base.html' %}
+<html>
+  {% block content %}
+    <hr>
+    <a href="{% url 'view-tasks' %}">Back</a>
+    <br><br>
+    <form 
+      action="{% url 'update-task' task.id %}" 
+      method="post" 
+      autocomplete="off" 
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      {{ form.as_div }}
+      <input type="submit" value="Update"/>
+    </form>
+  {% endblock content %}
+</html>
